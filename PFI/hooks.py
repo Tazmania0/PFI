@@ -1,5 +1,15 @@
 from frappe import _
 
+app_name = "PFI"
+app_title = "ERPNext Customizations"
+app_publisher = "Your Company Name"
+app_description = "Customizations for ERPNext tailored to garment manufacturing, job cards, and BOM workflows."
+app_icon = "octicon octicon-file-directory"
+app_color = "blue"
+app_email = "your.email@company.com"
+app_license = "MIT"
+app_version = "1.0.0"
+
 doc_events = {
     "Work Order": {
         "before_submit": "PFI.custom_scripts.work_order_custom.before_submit_work_order"
