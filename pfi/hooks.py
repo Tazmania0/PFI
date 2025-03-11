@@ -5,7 +5,7 @@ app_title = "PFI"
 app_publisher = "PFI"
 
 app_description = "Custom ERPNext App for Garment Manufacturing and Job Card Customization"
-app_icon = "octicon octicon-file-directory"
+#app_icon = "octicon octicon-file-directory"
 app_color = "gray"
 app_email = "your@email.com"
 
