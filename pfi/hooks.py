@@ -32,9 +32,6 @@ doc_events = {
 }
 
 
-#app_include_js = "public/js/work_order_custom.js"
-#app_include_css = "public/css/work_order.css"
-
 
 include_js = {
     "public/js/pfi.js"
