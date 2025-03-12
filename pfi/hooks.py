@@ -17,10 +17,6 @@ doc_events = {
 #    "Work Order": {
 #        "before_submit": "pfi.custom_scripts.work_order_custom.before_submit_work_order"
 #    },
-    "BOM": {
-        "validate": "pfi.custom_scripts.bom_service_check.validate_bom",
-        "before_submit": "pfi.custom_scripts.bom_service_check.before_submit_bom"
-    },
 #    "Work Order": {
 #
 #        "validate": "pfi.work_order_custom.validate_work_order"
@@ -31,6 +27,9 @@ doc_events = {
 #    } 
 }
 
+override_doctype_class = {
+    "BOM": "pfi.custom_scripts.bom_service_check.override_bom_doc"
+}
 
 
 include_js = {
