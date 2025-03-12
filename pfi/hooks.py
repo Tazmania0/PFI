@@ -48,3 +48,7 @@ doctype_js = {
 #    "Job Card": "public/js/job_card_custom.js"
 
 }
+
+after_migrate = [
+    "pfi.patches.v1_0_0.add_custom_field_to_bom.execute"
+]

@@ -1,18 +1,9 @@
+// bom.js
 frappe.ui.form.on('BOM', {
     refresh: function(frm) {
-        toggle_items_table(frm);
+        frm.toggle_display(['operations'], !frm.doc.is_service_bom);
     },
-    is_service_bom: function(frm) {
-        toggle_items_table(frm);
+    _is_service: function(frm) {
+        frm.toggle_display(['operations'], !frm.doc._is_service_bom);
     }
 });
-
-function toggle_items_table(frm) {
-    if (frm.doc.is_service_bom) {
-        frm.set_df_property('items', 'hidden', 1);
-        frm.fields_dict.items.grid.wrapper.hide();
-    } else {
-        frm.set_df_property('items', 'hidden', 0);
-        frm.fields_dict.items.grid.wrapper.show();
-    }
-}
