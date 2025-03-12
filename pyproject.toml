@@ -7,8 +7,7 @@ authors = [
 ]
 license = {text = "MIT"}
 
-[tool.setuptools]
-packages = ["pfi"]
+
 
 [build-system]
 requires = ["setuptools>=61.0"]
