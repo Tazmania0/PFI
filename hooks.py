@@ -30,7 +30,7 @@ doc_events = {
         "before_save": "pfi.custom_scripts.work_order_validate.before_save"
     } 
 }
-fixtures = ["Custom Field", "Print Format"]
+
 
 #app_include_js = "public/js/work_order_custom.js"
 #app_include_css = "public/css/work_order.css"

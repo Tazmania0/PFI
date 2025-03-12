@@ -1,0 +1,2 @@
+pfi.patches.v1_0_0.create_cutting_and_size_tables
+pfi.patches.v1_0_0.add_custom_field_to_bom
