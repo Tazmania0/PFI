@@ -13,6 +13,22 @@ app_license = "MIT"
 
 app_version = "1.0.0"
 
+
+
+def override_bom_class():
+    from erpnext.manufacturing.doctype.bom.bom import BOM as OriginalBOM
+    from pfi.custom_scripts.bom_service_check import CustomBOM
+
+    # Monkey-patch the BOM class
+    OriginalBOM.__bases__ = (CustomBOM,)
+
+# Run the override on app initialization
+app_initialized = {
+    "after_migrate": override_bom_class
+}
+
+
+
 doc_events = {
 #    "Work Order": {
 #        "before_submit": "pfi.custom_scripts.work_order_custom.before_submit_work_order"
@@ -31,7 +47,6 @@ doc_events = {
 override_doctype_class = {
     "BOM": "pfi.custom_scripts.bom_service_check.CustomBOM"
 }
-
 
 include_js = {
     "public/js/pfi.js"
