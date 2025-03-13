@@ -4,11 +4,11 @@ from erpnext.manufacturing.doctype.bom.bom import BOM
 
 class CustomBOM(BOM):
     def validate(self):
-        # Clear items and skip validation for service BOMs
         if self.is_service_bom:
+            # Bypass mandatory check for items
+            self.flags.ignore_mandatory = True
             self.items = []  # Force empty items table
-            self.flags.ignore_mandatory = True  # Bypass mandatory checks for items
-            return
+            return  # Skip all standard validation
 
         # Validate Operations if "With Operations" is checked
         if self.with_operations and not self.operations:
