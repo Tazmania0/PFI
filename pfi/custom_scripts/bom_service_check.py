@@ -4,16 +4,16 @@ from erpnext.manufacturing.doctype.bom.bom import BOM
 
 class CustomBOM(BOM):
     def validate(self):
-        print("Custom BOM validation called")
-        # Skip all validation for service BOMs
+        frappe.log_error("CustomBOM validate called", "DEBUG")
         if self.is_service_bom:
+            # Force clear items and bypass validation
+            self.items = []
             self.flags.ignore_mandatory = True  # Bypass mandatory checks
-            self.items = []  # Force clear items
-            return  # Skip rest of validation
+            return  # Skip all parent validation
 
-        # For non-service BOMs, validate Operations if "With Operations" is checked
+        # For non-service BOMs, validate normally
+        super().validate()
+
+        # Additional check for operations
         if self.with_operations and not self.operations:
             frappe.throw(_("Operations are required when 'With Operations' is checked."))
-        
-        # Run standard validation for non-service BOMs
-        super().validate()
