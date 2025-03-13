@@ -42,11 +42,16 @@ doc_events = {
 #        "before_save": "pfi.custom_scripts.work_order_validate.before_save"
 #    } 
 }
+doc_events = {
+    "BOM": {
+        "before_validate": "pfi.custom_scripts.bom_events.validate_bom"
+    }
+}
 
 # hooks.py
-override_doctype_class = {
-    "BOM": "pfi.custom_scripts.bom_service_check.CustomBOM"
-}
+#override_doctype_class = {
+#    "BOM": "pfi.custom_scripts.bom_service_check.CustomBOM"
+#}
 
 include_js = {
     "public/js/pfi.js"
