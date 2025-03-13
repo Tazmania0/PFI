@@ -27,8 +27,9 @@ doc_events = {
 #    } 
 }
 
+# hooks.py
 override_doctype_class = {
-    "BOM": "pfi.custom_scripts.bom_service_check.override_bom_doc"
+    "BOM": "pfi.custom_scripts.bom_service_check.CustomBOM"
 }
 
 
