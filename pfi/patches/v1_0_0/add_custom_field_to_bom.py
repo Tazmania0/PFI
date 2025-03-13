@@ -2,19 +2,30 @@
 import frappe
 
 def execute():
-    frappe.reload_doctype("BOM")  # Reload BOM DocType schema
+    frappe.reload_doctype("BOM")
     create_custom_field()
 
 def create_custom_field():
-    custom_field = {
-        "dt": "BOM",
-        "label": "Is Service",
-        "fieldname": "is_service_bom",
-        "fieldtype": "Check",
-        "insert_after": "transfer_material_against",  # Adjust placement
-        "description": "Check if this BOM is for a service (non-stock item)."
-    }
-    frappe.get_doc({
-        "doctype": "Custom Field",
-        **custom_field
-    }).insert(ignore_permissions=True)
+    fieldname = "is_service_bom"
+    
+    # Check if field already exists
+    if not frappe.db.exists("Custom Field", 
+        {"dt": "BOM", "fieldname": fieldname}):
+        
+        custom_field = {
+            "dt": "BOM",
+            "label": "Is Service",
+            "fieldname": fieldname,
+            "fieldtype": "Check",
+            "insert_after": "transfer_material_against",
+            "description": "Check if this BOM is for a service (non-stock item)."
+        }
+        
+        frappe.get_doc({
+            "doctype": "Custom Field",
+            **custom_field
+        }).insert(ignore_permissions=True)
+        
+        frappe.msgprint(f"Created custom field '{fieldname}' in BOM")
+    else:
+        frappe.msgprint(f"Custom field '{fieldname}' already exists in BOM - Skipping creation")
