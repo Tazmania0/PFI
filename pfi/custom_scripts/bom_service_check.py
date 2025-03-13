@@ -3,6 +3,11 @@ from frappe import _
 from erpnext.manufacturing.doctype.bom.bom import BOM
 
 class CustomBOM(BOM):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        frappe.log_error("CustomBOM initialized", "Debug")  # Debug line
+
+class CustomBOM(BOM):
     def validate(self):
         frappe.log_error("CustomBOM validate called", "DEBUG")
         frappe.throw("Custom Validation Active!")  # Test line
