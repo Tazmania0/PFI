@@ -4,9 +4,9 @@ from erpnext.manufacturing.doctype.bom.bom import BOM
 
 class CustomBOM(BOM):
     def validate(self):
-      frappe.log_error("CustomBOM validate called", "DEBUG")
+        frappe.log_error("CustomBOM validate called", "DEBUG")
       
-      if self.is_service_bom:
+        if self.is_service_bom:
             # Bypass all validation for service BOMs
             self.items = []
             self.flags.ignore_mandatory = True
