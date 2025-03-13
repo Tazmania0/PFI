@@ -17,7 +17,7 @@ def create_custom_field():
             "label": "Is Service",
             "fieldname": fieldname,
             "fieldtype": "Check",
-            "insert_after": "transfer_material_against",
+            "insert_after": "with_operations",  # Now placed below "With Operations"
             "description": "Check if this BOM is for a service (non-stock item)."
         }
         
