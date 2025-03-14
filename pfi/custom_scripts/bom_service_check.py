@@ -1,15 +1,19 @@
 # pfi/custom_scripts/bom_service_check.py
 from erpnext.manufacturing.doctype.bom.bom import BOM as OriginalBOM
 class CustomBOM(OriginalBOM):
-    def validate_materials(self):
-        """Override to skip raw material validation for service BOMs"""
-        
+def validate_materials(self):
         if self.is_service_bom:
-            return  # Skip validation for service BOMs
+            self.items = []  # Clear items table
+            self.flags.ignore_mandatory = True  # Bypass framework-level checks
+            return
             
-        # Run original validation for non-service BOMs
         super().validate_materials()
 
+def validate_rm(self):
+        """Override original item existence check"""
+        if not self.is_service_bom:
+            super().validate_rm()
+            
     def calculate_rm_cost(self, save=False):
         """Override to exclude raw material cost calculation for service BOMs"""
         if self.is_service_bom:
