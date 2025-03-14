@@ -10,6 +10,7 @@ frappe.ui.form.on('BOM', {
             frm.clear_table('items');
             frm.refresh_field('items');
         }
+		frm.events.toggle_items_requirement(frm);
     },
     with_operations: function(frm) {
         // Toggle "Is Service" visibility and reset if needed
@@ -20,11 +21,17 @@ frappe.ui.form.on('BOM', {
     },
     is_service_bom: function(frm) {
         // Clear Items table and hide it
+		frm.events.toggle_items_requirement(frm);
         frm.toggle_display('items', !frm.doc.is_service_bom);
         if (frm.doc.is_service_bom) {
             frm.clear_table('items');
             frm.refresh_field('items');
         }
+    },
+	toggle_items_requirement: function(frm) {
+        // Dynamically set items requirement
+        frm.set_df_property('items', 'reqd', !frm.doc.is_service_bom);
+        frm.toggle_display('items', !frm.doc.is_service_bom);
     }
   
 
