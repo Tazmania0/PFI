@@ -26,28 +26,7 @@ frappe.ui.form.on('BOM', {
             frm.refresh_field('items');
         }
     }
-	
-    // Override client-side mandatory check
-    before_save: function(frm) {
-        if (frm.doc.is_service_bom) {
-            // Bypass items check for service BOMs
-            frm.doc.items = [];
-            frm.refresh_field('items');
-        }
-    },
-
-    // UI Handling
-    refresh: function(frm) {
-        frm.toggle_display('is_service_bom', frm.doc.with_operations);
-        frm.toggle_display(['items', 'scrap_items'], !frm.doc.is_service_bom);
-        
-        if (frm.doc.is_service_bom) {
-            frm.clear_table('items');
-            frm.clear_table('scrap_items');
-            frm.refresh_field('items');
-            frm.refresh_field('scrap_items');
-        }
-    },
+  
 
 
 });
