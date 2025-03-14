@@ -15,17 +15,6 @@ app_version = "1.0.0"
 
 
 
-def override_bom_class():
-    from erpnext.manufacturing.doctype.bom.bom import BOM as OriginalBOM
-    from pfi.custom_scripts.bom_service_check import CustomBOM
-
-    # Monkey-patch the BOM class
-    OriginalBOM.__bases__ = (CustomBOM,)
-
-# Run the override on app initialization
-app_initialized = {
-    "after_migrate": override_bom_class
-}
 
 
 
@@ -45,7 +34,7 @@ doc_events = {
 doc_events = {
 #    "BOM": {
 #        "before_validate": "pfi.custom_scripts.bom_events.validate_bom"
-    }
+#    }
 }
 
 # hooks.py
