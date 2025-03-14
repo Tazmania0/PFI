@@ -1,12 +1,8 @@
 # pfi/custom_scripts/bom_service_check.py
-
-from frappe import _
 from erpnext.manufacturing.doctype.bom.bom import BOM as OriginalBOM
 class CustomBOM(OriginalBOM):
     def validate_materials(self):
         """Override to skip raw material validation for service BOMs"""
-        # Debug message 
-        frappe.msgprint("Skipping raw material validation for Service BOM")
         
         if self.is_service_bom:
             return  # Skip validation for service BOMs
