@@ -1,7 +1,7 @@
 # pfi/custom_scripts/bom_service_check.py
 from erpnext.manufacturing.doctype.bom.bom import BOM as OriginalBOM
 class CustomBOM(OriginalBOM):
-def validate_materials(self):
+    def validate_materials(self):
         if self.is_service_bom:
             self.items = []  # Clear items table
             self.flags.ignore_mandatory = True  # Bypass framework-level checks
@@ -9,7 +9,7 @@ def validate_materials(self):
             
         super().validate_materials()
 
-def validate_rm(self):
+    def validate_rm(self):
         """Override original item existence check"""
         if not self.is_service_bom:
             super().validate_rm()
