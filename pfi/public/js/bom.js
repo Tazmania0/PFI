@@ -49,12 +49,5 @@ frappe.ui.form.on('BOM', {
         }
     },
 
-    with_operations: function(frm) {
-        frm.toggle_display('is_service_bom', frm.doc.with_operations);
-        if (!frm.doc.with_operations && frm.doc.is_service_bom) {
-            frm.set_value('is_service_bom', 0);
-        }
-    },
 
-   
 });
