@@ -56,13 +56,5 @@ frappe.ui.form.on('BOM', {
         }
     },
 
-    is_service_bom: function(frm) {
-        frm.toggle_display(['items', 'scrap_items'], !frm.doc.is_service_bom);
-        if (frm.doc.is_service_bom) {
-            frm.clear_table('items');
-            frm.clear_table('scrap_items');
-            frm.refresh_field('items');
-            frm.refresh_field('scrap_items');
-        }
-    }
+   
 });
